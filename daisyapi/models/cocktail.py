@@ -9,5 +9,4 @@ class Cocktail(models.Model):
     preparation = models.ForeignKey(Preparation, related_name="preparation")
     glass = models.ForeignKey(Glass, related_name="glass")
     ice = models.ForeignKey(Ice, related_name="ice")
-    garnish = models.ForeignKey(Garnish, related_name="garnish")
     img_url = models.CharField(max_length=1000)
