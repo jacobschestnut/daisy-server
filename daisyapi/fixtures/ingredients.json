@@ -1,0 +1,138 @@
+[
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 1,
+        "fields": {
+            "name": "Vodka",
+            "type": 1
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 2,
+        "fields": {
+            "name": "Gin",
+            "type": 1
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 3,
+        "fields": {
+            "name": "Tequila",
+            "type": 1
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 4,
+        "fields": {
+            "name": "Bourbon",
+            "type": 1
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 5,
+        "fields": {
+            "name": "Rye",
+            "type": 1
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 6,
+        "fields": {
+            "name": "Aperol",
+            "type": 1
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 7,
+        "fields": {
+            "name": "Rum",
+            "type": 1
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 8,
+        "fields": {
+            "name": "Campari",
+            "type": 1
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 9,
+        "fields": {
+            "name": "Sweet Vermouth",
+            "type": 1
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 10,
+        "fields": {
+            "name": "Dry Vermouth",
+            "type": 1
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 11,
+        "fields": {
+            "name": "Lemon",
+            "type": 2
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 12,
+        "fields": {
+            "name": "Lime",
+            "type": 2
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 13,
+        "fields": {
+            "name": "Angostura",
+            "type": 3
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 14,
+        "fields": {
+            "name": "Orange",
+            "type": 3
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 16,
+        "fields": {
+            "name": "Lime Wedge",
+            "type": 4
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 17,
+        "fields": {
+            "name": "Simple Syrup",
+            "type": 7
+        }
+    },
+    {
+        "model": "daisyapi.ingredient",
+        "pk": 18,
+        "fields": {
+            "name": "Triple Sec",
+            "type": 1
+        }
+    }
+]

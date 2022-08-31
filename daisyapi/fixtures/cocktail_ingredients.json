@@ -1,0 +1,62 @@
+[
+    {
+        "model": "daisyapi.CocktailIngredient",
+        "pk": 1,
+        "fields": {
+            "ingredient": 3,
+            "cocktail": 1,
+            "amount": 2.0,
+            "unit": 1
+        }
+    },
+    {
+        "model": "daisyapi.CocktailIngredient",
+        "pk": 2,
+        "fields": {
+            "ingredient": 12,
+            "cocktail": 1,
+            "amount": 0.75,
+            "unit": 1
+        }
+    },
+    {
+        "model": "daisyapi.CocktailIngredient",
+        "pk": 3,
+        "fields": {
+            "ingredient": 17,
+            "cocktail": 1,
+            "amount": 0.25,
+            "unit": 1
+        }
+    },
+    {
+        "model": "daisyapi.CocktailIngredient",
+        "pk": 4,
+        "fields": {
+            "ingredient": 18,
+            "cocktail": 1,
+            "amount": 0.75,
+            "unit": 1
+        }
+    },
+    {
+        "model": "daisyapi.CocktailIngredient",
+        "pk": 5,
+        "fields": {
+            "ingredient": 18,
+            "cocktail": 1,
+            "amount": 0.75,
+            "unit": 1
+        }
+    },
+    {
+        "model": "daisyapi.CocktailIngredient",
+        "pk": 6,
+        "fields": {
+            "ingredient": 16,
+            "cocktail": 1,
+            "amount": 1,
+            "unit": null
+        }
+    }
+]

@@ -1,7 +1,5 @@
 from .cocktail_ingredient_tests import CocktailIngredientTests
 from .cocktail_tests import CocktailTests
-from .favorite_tests import FavoriteTests
-from .garnish_tests import GarnishTests
 from .glass_tests import GlassTests
 from .ice_tests import IceTests
 from .ingredient_tests import IngredientTests

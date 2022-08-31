@@ -1,0 +1,30 @@
+[
+    {
+        "model": "daisyapi.ice",
+        "pk": 1,
+        "fields": {
+            "label": "Cubes"
+        }
+    },
+    {
+        "model": "daisyapi.ice",
+        "pk": 2,
+        "fields": {
+            "label": "Crushed"
+        }
+    },
+    {
+        "model": "daisyapi.ice",
+        "pk": 3,
+        "fields": {
+            "label": "Large Cube"
+        }
+    },
+    {
+        "model": "daisyapi.ice",
+        "pk": 4,
+        "fields": {
+            "label": "None"
+        }
+    }
+]

@@ -1,0 +1,65 @@
+[
+    {
+        "model": "daisyapi.glass",
+        "pk": 1,
+        "fields": {
+            "label": "Rocks"
+        }
+    },
+    {
+        "model": "daisyapi.glass",
+        "pk": 2,
+        "fields": {
+            "label": "Highball"
+        }
+    },
+    {
+        "model": "daisyapi.glass",
+        "pk": 3,
+        "fields": {
+            "label": "Coupe"
+        }
+    },
+    {
+        "model": "daisyapi.glass",
+        "pk": 4,
+        "fields": {
+            "label": "Collins"
+        }
+    },
+    {
+        "model": "daisyapi.glass",
+        "pk": 5,
+        "fields": {
+            "label": "Martini"
+        }
+    },
+    {
+        "model": "daisyapi.glass",
+        "pk": 6,
+        "fields": {
+            "label": "Flute"
+        }
+    },
+    {
+        "model": "daisyapi.glass",
+        "pk": 7,
+        "fields": {
+            "label": "Pint"
+        }
+    },
+    {
+        "model": "daisyapi.glass",
+        "pk": 8,
+        "fields": {
+            "label": "Shot"
+        }
+    },
+    {
+        "model": "daisyapi.glass",
+        "pk": 9,
+        "fields": {
+            "label": "Wine"
+        }
+    }
+]

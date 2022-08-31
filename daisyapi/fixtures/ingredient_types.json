@@ -1,0 +1,51 @@
+[
+    {
+        "model": "daisyapi.IngredientType",
+        "pk": 1,
+        "fields": {
+            "label": "Spirit"
+        }
+    },
+    {
+        "model": "daisyapi.IngredientType",
+        "pk": 2,
+        "fields": {
+            "label": "Juice"
+        }
+    },
+    {
+        "model": "daisyapi.IngredientType",
+        "pk": 3,
+        "fields": {
+            "label": "Bitters"
+        }
+    },
+    {
+        "model": "daisyapi.IngredientType",
+        "pk": 4,
+        "fields": {
+            "label": "Garnish"
+        }
+    },
+    {
+        "model": "daisyapi.IngredientType",
+        "pk": 5,
+        "fields": {
+            "label": "Fruit"
+        }
+    },
+    {
+        "model": "daisyapi.IngredientType",
+        "pk": 6,
+        "fields": {
+            "label": "Misc"
+        }
+    },
+    {
+        "model": "daisyapi.IngredientType",
+        "pk": 7,
+        "fields": {
+            "label": "Sweetener"
+        }
+    }
+]

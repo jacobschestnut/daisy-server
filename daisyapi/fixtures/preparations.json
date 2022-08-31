@@ -1,0 +1,30 @@
+[
+    {
+        "model": "daisyapi.preparation",
+        "pk": 1,
+        "fields": {
+            "label": "Shake"
+        }
+    },
+    {
+        "model": "daisyapi.preparation",
+        "pk": 2,
+        "fields": {
+            "label": "Stir"
+        }
+    },
+    {
+        "model": "daisyapi.preparation",
+        "pk": 3,
+        "fields": {
+            "label": "Swizzle"
+        }
+    },
+    {
+        "model": "daisyapi.preparation",
+        "pk": 4,
+        "fields": {
+            "label": "BIG"
+        }
+    }
+]

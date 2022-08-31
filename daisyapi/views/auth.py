@@ -56,9 +56,7 @@ def register_user(request):
 
     # Now save the extra info in the daisyapi_mixologist table
     mixologist = Mixologist.objects.create(
-        bio=request.data['bio'],
-        user=new_user,
-        active=True
+        user=new_user
     )
 
     # Use the REST Framework's token generator on the new user account

@@ -1,0 +1,10 @@
+[
+    {
+        "model": "daisyapi.favorite",
+        "pk": 1,
+        "fields": {
+            "mixologist": 1,
+            "cocktail": 1
+        }
+    }
+]

@@ -1,0 +1,16 @@
+[
+    {
+        "model": "daisyapi.cocktail",
+        "pk": 1,
+        "fields": {
+            "name": "Margarita",
+            "creator": 1,
+            "description": "A classic cocktail consisting of tequila, orange liqueur, and lime juice often served with salt on the rim of the glass.",
+            "instructions": "Combine all ingredients to shaker, shake, strain, serve on the rocks with a salted rim and a lime wedge.",
+            "preparation": 1,
+            "glass": 1,
+            "ice": 1,
+            "img_url": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/marg-h-1526063646.jpg"
+        }
+    }
+]

@@ -1,4 +1,3 @@
-from cProfile import label
 from django.db import models
 
 class IngredientType(models.Model):

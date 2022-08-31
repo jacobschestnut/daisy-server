@@ -1,0 +1,30 @@
+[
+    {
+        "model": "daisyapi.unit",
+        "pk": 1,
+        "fields": {
+            "label": "oz"
+        }
+    },
+    {
+        "model": "daisyapi.unit",
+        "pk": 2,
+        "fields": {
+            "label": "ml"
+        }
+    },
+    {
+        "model": "daisyapi.unit",
+        "pk": 3,
+        "fields": {
+            "label": "dash"
+        }
+    },
+    {
+        "model": "daisyapi.unit",
+        "pk": 4,
+        "fields": {
+            "label": "bar spoon"
+        }
+    }
+]
