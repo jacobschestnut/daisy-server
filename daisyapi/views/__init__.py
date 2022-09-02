@@ -1,0 +1,1 @@
+from .cocktail import CocktailView
