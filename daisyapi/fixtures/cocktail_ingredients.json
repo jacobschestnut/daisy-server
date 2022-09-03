@@ -41,16 +41,6 @@
     },
     {
         "model": "daisyapi.CocktailIngredient",
-        "pk": 5,
-        "fields": {
-            "ingredient": 18,
-            "cocktail": 1,
-            "amount": 0.75,
-            "unit": 1
-        }
-    },
-    {
-        "model": "daisyapi.CocktailIngredient",
         "pk": 6,
         "fields": {
             "ingredient": 16,
