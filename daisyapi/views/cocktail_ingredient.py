@@ -16,7 +16,7 @@ class CocktailIngredientView(ViewSet):
             Response -- JSON serialized list of cocktails
         """
         
-        ingredients = CocktailIngredient.objects.all()
+        ingredients = CocktailIngredient.objects.all().order_by('-amount')
         cocktail = request.query_params.get('cocktail', None)
         if cocktail is not None:
             ingredients = ingredients.filter(cocktail=cocktail)
@@ -31,4 +31,3 @@ class CocktailIngredientSerializer(serializers.ModelSerializer):
         model = CocktailIngredient
         fields = ('id', 'cocktail', 'amount', 'ingredient', 'unit')
         depth = 2
-        ordering = ('-amount')
