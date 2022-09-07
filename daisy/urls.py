@@ -10,6 +10,7 @@ from daisyapi.views.ice import IceView
 from daisyapi.views.ingredient_types import IngredientTypeView
 from daisyapi.views.ingredients import IngredientView
 from daisyapi.views.preparations import PreparationView
+from daisyapi.views.unit import UnitView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'cocktails', CocktailView, 'cocktail')
@@ -19,6 +20,7 @@ router.register(r'ingredient_types', IngredientTypeView, 'ingredient_types')
 router.register(r'preparations', PreparationView, 'preparation')
 router.register(r'ice', IceView, 'ice')
 router.register(r'glass', GlassView, 'glass')
+router.register(r'units', UnitView, 'unit')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -5,3 +5,4 @@ from .ingredient_types import IngredientTypeView
 from .preparations import PreparationView
 from .ice import IceView
 from .glass import GlassView
+from .unit import UnitView
