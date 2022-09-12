@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from daisyapi.models import CocktailIngredient, cocktail_ingredient
+from daisyapi.models import CocktailIngredient, Cocktail
 
 
 class CocktailIngredientView(ViewSet):
@@ -23,15 +23,16 @@ class CocktailIngredientView(ViewSet):
         serializer = CocktailIngredientSerializer(ingredients, many=True, context={'request':request})
         return Response(serializer.data)
     
-    def create(self, request):
+    def create(self, request, pk):
         """Handle POST operations
 
         Returns:
             Response -- JSON serialized cocktail_ingredient instance
         """
+        cocktail = Cocktail.objects.get(pk=pk)
         serializer = CocktailIngredientSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        cocktail_ingredient = serializer.save()
+        cocktail_ingredient = serializer.save(cocktail=cocktail)
         res_serializer = CocktailIngredientSerializer(cocktail_ingredient)
         return Response(res_serializer.data, status=status.HTTP_201_CREATED)
     
