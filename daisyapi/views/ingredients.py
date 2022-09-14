@@ -31,7 +31,7 @@ class IngredientView(ViewSet):
             Response -- JSON serialized list of ingredients
         """
         
-        ingredients = Ingredient.objects.all()
+        ingredients = Ingredient.objects.all().order_by('name')
         serializer = IngredientSerializer(ingredients, many=True)
         return Response(serializer.data)
     
@@ -53,4 +53,4 @@ class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
         fields = ('id', 'name', 'type')
-        depth = 1
+        depth = 2
