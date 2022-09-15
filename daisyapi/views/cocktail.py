@@ -37,7 +37,7 @@ class CocktailView(ViewSet):
             Response -- JSON serialized list of cocktails
         """
         
-        cocktails = Cocktail.objects.all()
+        cocktails = Cocktail.objects.all().order_by('name')
         serializer = CocktailSerializer(cocktails, many=True)
         return Response(serializer.data)
     
