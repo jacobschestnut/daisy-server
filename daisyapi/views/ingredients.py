@@ -41,10 +41,10 @@ class IngredientView(ViewSet):
         Returns:
             Response -- JSON serialized ingredient instance
         """
-        serializer = IngredientSerializer(data=request.data)
+        serializer = CreateIngredientSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         ingredient = serializer.save()
-        res_serializer = IngredientSerializer(ingredient)
+        res_serializer = CreateIngredientSerializer(ingredient)
         return Response(res_serializer.data, status=status.HTTP_201_CREATED)
     
 class IngredientSerializer(serializers.ModelSerializer):
@@ -54,3 +54,10 @@ class IngredientSerializer(serializers.ModelSerializer):
         model = Ingredient
         fields = ('id', 'name', 'type')
         depth = 2
+        
+class CreateIngredientSerializer(serializers.ModelSerializer):
+    """JSON serializer for ingredients
+    """
+    class Meta:
+        model = Ingredient
+        fields = ('id', 'name', 'type')

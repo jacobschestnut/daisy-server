@@ -23,12 +23,13 @@ class CocktailIngredientView(ViewSet):
         serializer = CocktailIngredientSerializer(ingredients, many=True, context={'request':request})
         return Response(serializer.data)
     
-    def create(self, request):
+    def create(self, request, pk):
         """Handle POST operations
 
         Returns:
             Response -- JSON serialized cocktail_ingredient instance
         """
+
         serializer = CocktailIngredientSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         cocktail_ingredient = serializer.save()

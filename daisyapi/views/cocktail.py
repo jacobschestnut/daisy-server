@@ -3,9 +3,8 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from daisyapi.models import Cocktail, glass, ice, preparation
+from daisyapi.models import Cocktail
 from daisyapi.models import Glass, Ice, Preparation
-from daisyapi.models import ingredient
 from daisyapi.models.cocktail_ingredient import CocktailIngredient
 from daisyapi.models.mixologist import Mixologist
 from daisyapi.models.ingredient import Ingredient
@@ -59,10 +58,11 @@ class CocktailView(ViewSet):
         new_cocktail = Cocktail.objects.get(pk=serializer.data['id'])
         if ingredients:
             for data_ingredient in ingredients:
+                unit_obj = Unit.objects.get(pk=data_ingredient['unit'])
                 ing_obj = Ingredient.objects.get(pk=data_ingredient['ingredient'])
                 cocktail_serializer = CocktailIngredientSerializer(data=data_ingredient)
                 cocktail_serializer.is_valid(raise_exception=True)
-                cocktail_ingredient = cocktail_serializer.save(cocktail=new_cocktail,ingredient=ing_obj)
+                cocktail_ingredient = cocktail_serializer.save(cocktail=new_cocktail,ingredient=ing_obj, unit=unit_obj)
                 cocktail_res_serializer = CocktailIngredientSerializer(cocktail_ingredient)
         return Response(res_serializer.data, status=status.HTTP_201_CREATED)
     
@@ -72,15 +72,15 @@ class CocktailView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
+        cocktail = Cocktail.objects.get(pk=pk)
+        # creator = Mixologist.objects.get(pk=request.data["creator"])
         ice = Ice.objects.get(pk=request.data['ice'])
         glass = Glass.objects.get(pk=request.data['glass'])
         preparation = Preparation.objects.get(pk=request.data['preparation'])
         # ingredients = request.data.get("ingredients")
         # if ingredients:
         #     del request.data["ingredients"]
-        serializer = CreateCocktailSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        cocktail = Cocktail.objects.get(pk=pk)
+        # cocktail.creator = creator
         cocktail.name = request.data["name"]
         cocktail.description = request.data["description"]
         cocktail.instructions = request.data["instructions"]
@@ -106,6 +106,7 @@ class CocktailView(ViewSet):
         #         cocktail_res_serializer = CocktailIngredientSerializer(cocktail_ingredient)
         # ingredients = CocktailIngredient.objects.get(pk=request.data["cocktail_ingredient"])
         # cocktail.ingredients = ingredients
+        print(cocktail)
         cocktail.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
