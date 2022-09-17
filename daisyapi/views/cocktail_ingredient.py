@@ -42,4 +42,4 @@ class CocktailIngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = CocktailIngredient
         fields = ('id', 'cocktail', 'amount', 'ingredient', 'unit')
-        depth = 2
+        depth = 1

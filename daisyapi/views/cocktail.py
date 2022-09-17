@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from daisyapi.models import Cocktail
 from daisyapi.models import Glass, Ice, Preparation
+from daisyapi.models import ingredient
 from daisyapi.models.cocktail_ingredient import CocktailIngredient
 from daisyapi.models.mixologist import Mixologist
 from daisyapi.models.ingredient import Ingredient
@@ -27,7 +28,7 @@ class CocktailView(ViewSet):
             serializer = CocktailSerializer(cocktail)
             return Response(serializer.data)
         except Cocktail.DoesNotExist as ex:
-            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND) 
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
     
 
     def list(self, request):
@@ -79,6 +80,8 @@ class CocktailView(ViewSet):
         serializer.save()
         cocktail.save()
         ingredients = request.data.get('ingredients')
+        CocktailIngredient.objects.filter(cocktail=cocktail).delete()
+    
         for ingredient_object in ingredients:
             unit = Unit.objects.get(pk=ingredient_object['unit'])
             ingredient = Ingredient.objects.get(pk=ingredient_object['ingredient'])
@@ -100,7 +103,7 @@ class CocktailView(ViewSet):
             return Response(None, status=status.HTTP_204_NO_CONTENT)
     
 class CocktailSerializer(serializers.ModelSerializer):
-    """JSON serializer for game types
+    """JSON serializer for cocktails
     """
     ingredients = CocktailIngredientSerializer(many=True, read_only=True)
     class Meta:
@@ -109,10 +112,9 @@ class CocktailSerializer(serializers.ModelSerializer):
         depth = 2
         
 class CreateCocktailSerializer(serializers.ModelSerializer):
-    """JSON serializer for game types
+    """JSON serializer for cocktails
     """
     ingredients = CocktailIngredientSerializer(many=True, read_only=True)
     class Meta:
         model = Cocktail
         fields = ('id', 'name', 'description', 'instructions', 'img_url', 'glass', 'ice', 'preparation', 'ingredients')
-        depth = 2
