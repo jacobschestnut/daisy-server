@@ -48,9 +48,8 @@ class CocktailView(ViewSet):
             Response -- JSON serialized cocktail instance
         """
         creator = Mixologist.objects.get(user=request.auth.user)
-        ingredients = request.data.get("ingredients")
-        if ingredients:
-            del request.data["ingredients"]
+        ingredients = request.data.get('ingredients')
+        print("ingredients hitting", ingredients)
         serializer = CreateCocktailSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         cocktail = serializer.save(creator=creator)
@@ -64,6 +63,7 @@ class CocktailView(ViewSet):
                 cocktail_serializer.is_valid(raise_exception=True)
                 cocktail_ingredient = cocktail_serializer.save(cocktail=new_cocktail,ingredient=ing_obj, unit=unit_obj)
                 cocktail_res_serializer = CocktailIngredientSerializer(cocktail_ingredient)
+        print('cocktail', cocktail)
         return Response(res_serializer.data, status=status.HTTP_201_CREATED)
     
     def update(self, request, pk):
@@ -72,43 +72,20 @@ class CocktailView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
+        
         cocktail = Cocktail.objects.get(pk=pk)
-        # creator = Mixologist.objects.get(pk=request.data["creator"])
-        ice = Ice.objects.get(pk=request.data['ice'])
-        glass = Glass.objects.get(pk=request.data['glass'])
-        preparation = Preparation.objects.get(pk=request.data['preparation'])
-        # ingredients = request.data.get("ingredients")
-        # if ingredients:
-        #     del request.data["ingredients"]
-        # cocktail.creator = creator
-        cocktail.name = request.data["name"]
-        cocktail.description = request.data["description"]
-        cocktail.instructions = request.data["instructions"]
-        cocktail.img_url = request.data["img_url"]
-        cocktail.glass = glass
-        cocktail.ice = ice
-        cocktail.preparation = preparation
-        # if ingredients:
-        #     for cock_ing in ingredients:
-        #         print(cock_ing)
-        #         ing_obj = Ingredient.objects.get(pk=cock_ing['ingredient'])
-        #         cocktail = Cocktail.objects.get(pk=pk)
-        #         unit = Unit.objects.get(pk=cock_ing['unit'])
-        #         cock_ing["ingredient"] = ing_obj
-        #         cock_ing['cocktail'] = cocktail
-        #         cock_ing['unit'] = unit
-        #         cock_ing['amount'] = cock_ing['amount']
-        #         cock_ing.save()
-        #         ing_obj = CocktailIngredient.objects.get(pk=data_ingredient['ingredient'])
-        #         cocktail_serializer = CocktailIngredientSerializer(data=data_ingredient)
-        #         cocktail_serializer.is_valid(raise_exception=True)
-        #         cocktail_ingredient = cocktail_serializer.save(cocktail=cocktail,ingredient=ing_obj)
-        #         cocktail_res_serializer = CocktailIngredientSerializer(cocktail_ingredient)
-        # ingredients = CocktailIngredient.objects.get(pk=request.data["cocktail_ingredient"])
-        # cocktail.ingredients = ingredients
-        print(cocktail)
+        serializer = CocktailSerializer(cocktail, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         cocktail.save()
-
+        ingredients = request.data.get('ingredients')
+        for ingredient_object in ingredients:
+            unit = Unit.objects.get(pk=ingredient_object['unit'])
+            ingredient = Ingredient.objects.get(pk=ingredient_object['ingredient'])
+            amount = float(ingredient_object['amount'])
+            cocktail_ingredient = CocktailIngredient(unit=unit, ingredient=ingredient, amount=amount, cocktail=cocktail)
+            cocktail_ingredient.save()
+            
         return Response(None, status=status.HTTP_204_NO_CONTENT)
     
     def destroy(self, request, pk):
@@ -125,14 +102,17 @@ class CocktailView(ViewSet):
 class CocktailSerializer(serializers.ModelSerializer):
     """JSON serializer for game types
     """
+    ingredients = CocktailIngredientSerializer(many=True, read_only=True)
     class Meta:
         model = Cocktail
-        fields = ('id', 'name', 'description', 'instructions', 'img_url', 'creator', 'glass', 'ice', 'preparation')
+        fields = ('id', 'name', 'description', 'instructions', 'img_url', 'creator', 'glass', 'ice', 'preparation', 'ingredients')
         depth = 2
         
 class CreateCocktailSerializer(serializers.ModelSerializer):
     """JSON serializer for game types
     """
+    ingredients = CocktailIngredientSerializer(many=True, read_only=True)
     class Meta:
         model = Cocktail
-        fields = ('id', 'name', 'description', 'instructions', 'img_url', 'glass', 'ice', 'preparation')
+        fields = ('id', 'name', 'description', 'instructions', 'img_url', 'glass', 'ice', 'preparation', 'ingredients')
+        depth = 2
