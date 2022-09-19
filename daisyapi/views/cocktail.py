@@ -1,12 +1,13 @@
 """View module for handling requests about cocktails"""
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from daisyapi.models import Cocktail
 from daisyapi.models import Glass, Ice, Preparation
-from daisyapi.models import ingredient
 from daisyapi.models.cocktail_ingredient import CocktailIngredient
+# from daisyapi.models.favorite import Favorite
 from daisyapi.models.mixologist import Mixologist
 from daisyapi.models.ingredient import Ingredient
 from daisyapi.models.unit import Unit
@@ -42,6 +43,14 @@ class CocktailView(ViewSet):
         serializer = CocktailSerializer(cocktails, many=True)
         return Response(serializer.data)
     
+    # def filter_by_favorite(self, request, pk):
+    #     """Get request to filter by favorite cocktails """
+    #     mixologist = Mixologist.objects.get(user=request.auth.user)
+    #     favorites = Favorite.objects.filter(mixologist=mixologist)
+    #     favorite_cocktails = [favorite.cocktail for favorite in favorites]
+    #     serializer = CocktailSerializer(favorite_cocktails, many=True)
+    #     return Response(serializer.data)
+    
     def create(self, request):
         """Handle POST operations
 
@@ -50,7 +59,6 @@ class CocktailView(ViewSet):
         """
         creator = Mixologist.objects.get(user=request.auth.user)
         ingredients = request.data.get('ingredients')
-        print("ingredients hitting", ingredients)
         serializer = CreateCocktailSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         cocktail = serializer.save(creator=creator)
@@ -64,7 +72,6 @@ class CocktailView(ViewSet):
                 cocktail_serializer.is_valid(raise_exception=True)
                 cocktail_ingredient = cocktail_serializer.save(cocktail=new_cocktail,ingredient=ing_obj, unit=unit_obj)
                 cocktail_res_serializer = CocktailIngredientSerializer(cocktail_ingredient)
-        print('cocktail', cocktail)
         return Response(res_serializer.data, status=status.HTTP_201_CREATED)
     
     def update(self, request, pk):
