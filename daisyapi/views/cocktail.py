@@ -82,13 +82,18 @@ class CocktailView(ViewSet):
         """
         
         cocktail = Cocktail.objects.get(pk=pk)
+        ice = Ice.objects.get(pk=request.data['ice'])
+        glass = Glass.objects.get(pk=request.data['glass'])
+        preparation = Preparation.objects.get(pk=request.data['preparation'])
+        cocktail.ice = ice
+        cocktail.glass = glass
+        cocktail.preparation = preparation
+        cocktail.save()
         serializer = CocktailSerializer(cocktail, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        cocktail.save()
         ingredients = request.data.get('ingredients')
         CocktailIngredient.objects.filter(cocktail=cocktail).delete()
-    
         for ingredient_object in ingredients:
             unit = Unit.objects.get(pk=ingredient_object['unit'])
             ingredient = Ingredient.objects.get(pk=ingredient_object['ingredient'])
