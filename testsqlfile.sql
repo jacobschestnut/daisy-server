@@ -28,3 +28,7 @@ DELETE FROM daisyapi_ingredient
     WHERE id = 28;
 DELETE FROM daisyapi_ingredient
     WHERE id = 29;
+DELETE FROM daisyapi_unit
+    WHERE id = 5;
+DELETE FROM daisyapi_unit
+    WHERE id = 6;
