@@ -95,7 +95,8 @@ class CocktailView(ViewSet):
         ingredients = request.data.get('ingredients')
         CocktailIngredient.objects.filter(cocktail=cocktail).delete()
         for ingredient_object in ingredients:
-            unit = Unit.objects.get(pk=ingredient_object['unit'])
+            if ingredient_object['unit']:
+                unit = Unit.objects.get(pk=ingredient_object['unit'])
             ingredient = Ingredient.objects.get(pk=ingredient_object['ingredient'])
             amount = float(ingredient_object['amount'])
             cocktail_ingredient = CocktailIngredient(unit=unit, ingredient=ingredient, amount=amount, cocktail=cocktail)
