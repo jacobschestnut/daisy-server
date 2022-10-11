@@ -1,4 +1,4 @@
-from tkinter import CASCADE
+from django.db.models.deletion import CASCADE
 from django.db import models
 from daisyapi.models.glass import Glass
 from daisyapi.models.ice import Ice
