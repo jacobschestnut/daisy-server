@@ -64,5 +64,6 @@ def register_user(request):
     print("This is my token:", token)
     # Return the token to the client
     data = { 'token': token.key,
+             'userId': new_user.id,
              'valid': True }
     return Response(data)
