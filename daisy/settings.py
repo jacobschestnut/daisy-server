@@ -141,7 +141,7 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'https://make-my-daisy.herokuapp.com'
+    'https://make-my-daisy.herokuapp.com/'
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
