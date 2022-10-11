@@ -1,0 +1,1 @@
+web: gunicorn daisy.wsgi --log-file -
