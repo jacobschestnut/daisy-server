@@ -30,7 +30,15 @@ class CocktailView(ViewSet):
             return Response(serializer.data)
         except Cocktail.DoesNotExist as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+        
+    @action(methods=['post'], detail=True)
+    def signup(self, request, pk):
+        """Get request for a single, random cocktail"""
     
+        gamer = Gamer.objects.get(user=request.auth.user)
+        event = Event.objects.get(pk=pk)
+        event.attendees.add(gamer)
+        return Response({'message': 'Gamer added'}, status=status.HTTP_201_CREATED)
 
     def list(self, request):
         """Handle GET requests to get all cocktails
